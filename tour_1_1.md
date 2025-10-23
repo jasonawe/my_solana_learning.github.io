@@ -31,6 +31,7 @@ docker下是成功了的
 docker下安装首先要找镜像，这里推荐两个镜像
 1. `pylejeune/solana-dev:anchor-0.31.1`
 2. `solanafoundation/anchor`
+
 镜像拉取成功后启动容器
 ` docker run -it --rm -v ${PWD}:/workspace -w /workspace pylejeune/solana-dev:anchor-0.31.1 bash
 `
@@ -48,8 +49,8 @@ where `<compatible-ver>` is the latest version supporting rustc 1.79.0-dev
 
 查看rust版本确实1.85.0，只得继续问ChatGPT，ChatGPT有时候回答的不准。
 尝试了多种办法后，直接升级solana的版本即可
-`sh -c "$(curl -sSfL https://release.anza.xyz/stable/install)"`
 
+`sh -c "$(curl -sSfL https://release.anza.xyz/stable/install)"`
 
 ### 写一个投票系统
 1. 第一步：初始化项目
@@ -64,7 +65,7 @@ where `<compatible-ver>` is the latest version supporting rustc 1.79.0-dev
 use anchor_lang::prelude::*;
 
 
-declare_id!("2kHSinjEa1RBV8Xv6VZk7mi2U1QMK4GwgaKgSUQaSDPh");
+declare_id!("12222");
 
 #[program]
 pub mod vote_program {
@@ -193,6 +194,7 @@ describe("vote_program", () => {
 
 
 ### 运行效果
+
 ```
 Found a 'test' script in the Anchor.toml. Running it as a test suite!
 
