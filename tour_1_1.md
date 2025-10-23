@@ -48,6 +48,8 @@ where `<compatible-ver>` is the latest version supporting rustc 1.79.0-dev
 
 查看rust版本确实1.85.0，只得继续问ChatGPT，ChatGPT有时候回答的不准。
 尝试了多种办法后，直接升级solana的版本即可
+`sh -c "$(curl -sSfL https://release.anza.xyz/stable/install)"`
+
 
 ### 写一个投票系统
 1. 第一步：初始化项目
@@ -191,8 +193,6 @@ describe("vote_program", () => {
 
 
 ### 运行效果
-`sh -c "$(curl -sSfL https://release.anza.xyz/stable/install)"`
-
 ```
 Found a 'test' script in the Anchor.toml. Running it as a test suite!
 
