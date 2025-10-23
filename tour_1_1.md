@@ -18,10 +18,10 @@ Windows 没有完整的 POSIX 环境，BPF 工具链无法正常运行。
 
 ### windows-WSL环境安装&运行
 前面一如既往的顺利，在领空投和获取余额上卡住了
-`
+```
 ichael@localhost:~$ solana balance
 Error: error sending request for url (https://api.devnet.solana.com/)
-`
+```
 
 因为健康上网的原因，调试了半天用windows的代理不行，所以放弃
 
@@ -37,14 +37,14 @@ docker下安装首先要找镜像，这里推荐两个镜像
 
 在`anchor build`的时候又出幺蛾子了
 
-`
+```
 error: rustc 1.79.0-dev is not supported by the following package:
                  Note that this is the rustc version that ships with Solana tools and not your system's rustc version. Use `solana-install update` or head over to https://docs.solanalabs.com/cli/install to install a newer version.
   indexmap@2.12.0 requires rustc 1.82
 Either upgrade rustc or select compatible dependency versions with
 `cargo update <name>@<current-ver> --precise <compatible-ver>`
 where `<compatible-ver>` is the latest version supporting rustc 1.79.0-dev
-`
+```
 
 查看rust版本确实1.85.0，只得继续问ChatGPT，ChatGPT有时候回答的不准。
 尝试了多种办法后，直接升级solana的版本即可
@@ -58,7 +58,7 @@ where `<compatible-ver>` is the latest version supporting rustc 1.79.0-dev
 `programs/solana_vote2/src/lib.rs`
 
 文件内容：
-`
+```
 use anchor_lang::prelude::*;
 
 
@@ -113,14 +113,14 @@ pub enum ErrorCode {
     #[msg("Candidate index out of bounds")]
     InvalidCandidate,
 }
-`
+```
 
 1. 第三步：编写TEST
 文件路径：
 `tests/solana_vote2.ts`
 
 文件内容
-`
+```
 import * as anchor from "@coral-xyz/anchor";
 import { Program } from "@coral-xyz/anchor";
 import { VoteProgram } from "../target/types/vote_program";
@@ -184,7 +184,7 @@ describe("vote_program", () => {
     assert.deepEqual(accountAfter.votes, [1, 2, 1]);
   });
 });
-`
+```
 4. 第四步：编译&测试
 `anchor build`
 `anchor test` 
@@ -193,7 +193,7 @@ describe("vote_program", () => {
 ### 运行效果
 `sh -c "$(curl -sSfL https://release.anza.xyz/stable/install)"`
 
-
+```
 Found a 'test' script in the Anchor.toml. Running it as a test suite!
 
 Running test suite: "/workspace/solana_vote2/Anchor.toml"
@@ -213,4 +213,4 @@ Vote for Charlie: [ 1, 2, 1 ]
     ✔ Vote for Charlie (465ms)
   4 passing (2s)
 Done in 21.75s.
-`
+```
