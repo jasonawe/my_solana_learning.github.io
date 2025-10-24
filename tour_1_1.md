@@ -29,6 +29,7 @@ Error: error sending request for url (https://api.devnet.solana.com/)
 ### windows-docker环境安装&运行
 docker下是成功了的
 docker下安装首先要找镜像，这里推荐两个镜像
+
 1. `pylejeune/solana-dev:anchor-0.31.1`
 2. `solanafoundation/anchor`
 
@@ -53,10 +54,12 @@ where `<compatible-ver>` is the latest version supporting rustc 1.79.0-dev
 `sh -c "$(curl -sSfL https://release.anza.xyz/stable/install)"`
 
 ### 写一个投票系统
-1. 第一步：初始化项目
+1. 初始化项目
+
 `anchor init solana_vote2`
 
-2. 第二步：编写lib
+2. 编写lib
+
 文件路径：
 `programs/solana_vote2/src/lib.rs`
 
@@ -118,7 +121,8 @@ pub enum ErrorCode {
 }
 ```
 
-1. 第三步：编写TEST
+3. 编写TEST
+
 文件路径：
 `tests/solana_vote2.ts`
 
@@ -188,7 +192,8 @@ describe("vote_program", () => {
   });
 });
 ```
-4. 第四步：编译&测试
+4. 编译&测试
+
 `anchor build`
 `anchor test` 
 
